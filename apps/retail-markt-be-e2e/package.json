@@ -1,0 +1,26 @@
+{
+  "name": "@retail-markt/retail-markt-be-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@retail-markt/retail-markt-be"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/retail-markt-be-e2e/jest.config.cts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@retail-markt/retail-markt-be:build",
+          "@retail-markt/retail-markt-be:serve"
+        ]
+      }
+    }
+  }
+}
