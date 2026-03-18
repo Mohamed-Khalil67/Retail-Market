@@ -132,3 +132,7 @@ And join the Nx community:
 - repair the seed.Ts and productsList.ts, in order after to create the seed data: npx ts-node ./prisma/seed.ts ( in apps/retail-markt-be also change the package.json file to add the seed command in the prisma section )
 
 - in apps/retail-markt-be , run npx prisma migrate dev --name init, pay attention that we are using prisma v7 not v6 , dapater need to be declared.
+
+- Setting up Graph Ql , npm i @nestjs/graphql @nestjs/apollo @apollo/server @as-integrations/express5 graphql
+
+-
