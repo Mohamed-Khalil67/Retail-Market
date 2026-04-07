@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Header } from './header';
+import { CheckoutFailure } from './checkout-failure';
 
-describe('Header', () => {
-  let component: Header;
-  let fixture: ComponentFixture<Header>;
+describe('CheckoutFailure', () => {
+  let component: CheckoutFailure;
+  let fixture: ComponentFixture<CheckoutFailure>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Header],
+      imports: [CheckoutFailure],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Header);
+    fixture = TestBed.createComponent(CheckoutFailure);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
