@@ -25,6 +25,18 @@ export const appRoutes: Route[] = [
   {
     path: 'checkout/success',
     loadComponent: () => import('./checkout/checkout-success/checkout-success').then((m) => m.CheckoutSuccess),
+  },
+  {
+    path: 'auth/login',
+    loadComponent: () => import('./auth/login/login').then((m) => m.Login),
+  },
+  {
+    path: 'auth/signup',
+    loadComponent: () => import('./auth/signup/signup').then((m) => m.Signup),
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
   }
 
 ];

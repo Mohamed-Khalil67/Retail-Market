@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class Stripe {
+export class StripeService {
   cartStore = inject(CartStore);
   http = inject(HttpClient);
 

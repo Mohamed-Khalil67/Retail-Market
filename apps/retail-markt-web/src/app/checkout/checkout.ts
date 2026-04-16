@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CartStore } from '../stores/cart.store';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { Stripe } from '../services/stripe';
+import { StripeService } from '../services/stripe';
 
 @Component({
   selector: 'app-checkout',
@@ -11,7 +11,7 @@ import { Stripe } from '../services/stripe';
 })
 export class Checkout {
   cartStore = inject(CartStore);
-  stripeService = inject(Stripe);
+  stripeService = inject(StripeService);
 
    checkout() {
       console.log(this.cartStore.items());
