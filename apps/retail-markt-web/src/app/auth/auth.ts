@@ -1,5 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, user } from '@angular/fire/auth';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  user,
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -7,10 +15,15 @@ import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEma
 export class AuthService {
   auth = inject(Auth);
   currentUser$ = user(this.auth);
+  idToken = '';
 
-  async login(email: string, password: string){
+  async login(email: string, password: string) {
     try {
-      const result = await signInWithEmailAndPassword(this.auth, email, password);
+      const result = await signInWithEmailAndPassword(
+        this.auth,
+        email,
+        password,
+      );
       return result.user;
     } catch (e) {
       console.error('Login error:', e);
@@ -20,12 +33,28 @@ export class AuthService {
 
   async signup(email: string, password: string) {
     try {
-      const result = await createUserWithEmailAndPassword(this.auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password,
+      );
       return result.user;
     } catch (e) {
       console.error('Sign up error:', e);
       throw e;
     }
+  }
+
+  async getToken() {
+    let token: string | null = null;
+    const user = this.auth.currentUser;
+    if (user) {
+      token = await user.getIdToken();
+    } else if (this.idToken) {
+      token = this.idToken;
+    }
+    console.log('token from getToken() method:', token);
+    return token;
   }
 
   async googleSignIn() {

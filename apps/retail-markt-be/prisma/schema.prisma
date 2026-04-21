@@ -21,7 +21,7 @@ model Product {
 
 model Order {
   id          String      @id @default(uuid())
-  userId      String?
+  userId      String?     // Firebase Auth UID (optional for guest orders)
   status      OrderStatus @default(PAYMENT_REQUIRED)
   totalAmount Float
   paymentId   String?
