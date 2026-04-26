@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {
-  CreateOrderInput,
-  CreateOrderServiceDto,
-} from './dto/create-order.input';
+import { CreateOrderServiceDto } from './dto/create-order.input';
 import { UpdateOrderInput } from './dto/update-order.input';
 import { PrismaService } from '../prisma/prisma.service';
 import { DeleteOrderResp } from './dto/delete-order-resp';
@@ -45,6 +42,27 @@ export class OrdersService {
             product: true,
           },
         },
+      },
+    });
+  }
+
+  findUserOrders(userId: string) {
+    return this.prisma.order.findMany({
+      where: {
+        userId,
+        status: {
+          not: 'PAYMENT_REQUIRED',
+        },
+      },
+      include: {
+        items: {
+          include: {
+            product: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }

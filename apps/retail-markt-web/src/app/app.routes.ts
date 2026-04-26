@@ -20,11 +20,17 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'checkout/cancel',
-    loadComponent: () => import('./checkout/checkout-failure/checkout-failure').then((m) => m.CheckoutFailure),
+    loadComponent: () =>
+      import('./checkout/checkout-failure/checkout-failure').then(
+        (m) => m.CheckoutFailure,
+      ),
   },
   {
     path: 'checkout/success',
-    loadComponent: () => import('./checkout/checkout-success/checkout-success').then((m) => m.CheckoutSuccess),
+    loadComponent: () =>
+      import('./checkout/checkout-success/checkout-success').then(
+        (m) => m.CheckoutSuccess,
+      ),
   },
   {
     path: 'auth/login',
@@ -35,8 +41,15 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./auth/signup/signup').then((m) => m.Signup),
   },
   {
+    path: 'orders',
+    loadComponent: () => import('./orders/orders').then((m) => m.Orders),
+  },
+  {
+    path: 'orders/:id',
+    loadComponent: () => import('./order/order').then((m) => m.Order),
+  },
+  {
     path: '**',
     redirectTo: 'home',
-  }
-
+  },
 ];
