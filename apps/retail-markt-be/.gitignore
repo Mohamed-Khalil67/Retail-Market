@@ -5,4 +5,3 @@ node_modules
 /src/generated/prisma
 
 service-account.json
-.service-account.json
